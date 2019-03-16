@@ -1,4 +1,8 @@
-<?php include_once $_SERVER["DOCUMENT_ROOT"] . "/admin/includes/header.php";?>
+<?php
+include_once $_SERVER["DOCUMENT_ROOT"] . "/managment/base.php";
+include_once $_SERVER["DOCUMENT_ROOT"] . "/managment/sessionmanager.php"; 
+include_once $_SERVER["DOCUMENT_ROOT"] . "/admin/includes/header.php";
+?>
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->

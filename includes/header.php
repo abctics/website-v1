@@ -16,7 +16,7 @@
     <!--bootstrap-->
   <link rel="stylesheet" href="/css/bootstrap/css/bootstrap.min.css">
     <!--fontawesome-->
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
 
   <meta name="theme-color" content="#fafafa">
 </head>
@@ -35,7 +35,7 @@
         <h1 class="company-title">Desarrollo ABC</h1>
        </div>
        <div class="container-hamburger">
-        <span id="btn-menu" class="icon-menu">☰</span>       
+        <span id="btn-menu" class="icon-menu">☰</span>
        </div>
        </div>
        <div class="parent-menu">
@@ -46,7 +46,7 @@
           <li class="main-menu-item"><a class="main-menu-link" href="#" data-toggle="modal" data-target="#elegantModalForm">Iniciar sesión</a></li>
           <li class="main-menu-item"><a class="main-menu-link" href="#" data-toggle="modal" data-target="#modalContactForm">contacto</a></li>
           </ul>
-        </nav>       
+        </nav>
        </div>
       </div>
     </header>
@@ -59,6 +59,6 @@
           <li class="menu-item-responsive" data-toggle="modal" data-target="#elegantModalForm"><a class="menu-link-responsive" href="#" >Iniciar sesión</a></li>
           <li class="menu-item-responsive" data-toggle="modal" data-target="#modalContactForm"><a class="menu-link-responsive" href="#" >contacto</a></li>
           </ul>
-        </nav>       
+        </nav>
        </div>
     </section>

@@ -8,7 +8,7 @@
  * Kroc Camen, and the H5BP dev community and team.
  */
 
- 
+
 /* ==========================================================================
    Base styles: opinionated defaults
    ========================================================================== */
@@ -99,15 +99,15 @@ textarea {
    ========================================================================== */
 header{
     max-width: 100vw;
-    box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.05);
-
-}
+    -webkit-box-shadow: -2px -2px 32px -1px rgba(52,179,160,1);
+    -moz-box-shadow: -2px -2px 32px -1px rgba(52,179,160,1);
+    box-shadow: -2px -2px 32px -1px rgba(52,179,160,1);
+  }
 div.container-header{
     width: 1200px;
     margin: auto;
     display: flex;
     flex-flow: wrap;
-
 }
 
 div.parent-logo div.container-logo{
@@ -232,7 +232,7 @@ div.parent-logo{
 div.parent-logo {
     width: 100vw;
     display: flex;
-    flex-flow: wrap;    
+    flex-flow: wrap;
 }
 div.parent-logo div.container-logo{
     width: 600px;
@@ -285,7 +285,7 @@ div.parent-menu nav ul li a{
     height: 20px;
     font-weight: 500;
 }
- 
+
 }
 
 @media only screen and (min-width: 576px) and (max-width: 768px){
@@ -298,7 +298,7 @@ div.parent-logo{
 div.parent-logo {
     width: 100vw;
     display: flex;
-    flex-flow: wrap;    
+    flex-flow: wrap;
 }
 div.parent-logo div.container-logo{
     width: 400px;
@@ -352,7 +352,7 @@ div.parent-menu nav ul li a{
     height: 20px;
     font-weight: 500;
 }
- 
+
 }
 
 
@@ -366,7 +366,7 @@ div.parent-logo{
 div.parent-logo {
     width: 100vw;
     display: flex;
-    flex-flow: wrap;    
+    flex-flow: wrap;
 }
 div.parent-logo div.container-logo{
     width: 350px;
@@ -419,7 +419,7 @@ div.parent-menu nav ul li a{
     height: 20px;
     font-weight: 500;
 }
- 
+
 }
 
 @media only screen and (min-width: 320px) and (max-width: 480px){
@@ -432,7 +432,7 @@ div.parent-logo{
 div.parent-logo {
     width: 100vw;
     display: flex;
-    flex-flow: wrap;    
+    flex-flow: wrap;
 }
 div.parent-logo div.container-logo{
     width: 280px;
@@ -500,7 +500,7 @@ div.parent-logo{
 div.parent-logo {
     width: 100vw;
     display: flex;
-    flex-flow: wrap;    
+    flex-flow: wrap;
 }
 div.parent-logo div.container-logo{
     max-width: 200px;
@@ -557,326 +557,111 @@ div.parent-menu nav ul li a{
 div.parent-logo div.container-logo h1{
     display: none;
 }
- 
-}
-
-/*legant modal login*/
-.form-elegant .font-small {
-    font-size: 0.8rem; }
-
-.form-elegant .z-depth-1a {
-    -webkit-box-shadow: 0 2px 5px 0 rgba(55, 161, 255, 0.26), 0 4px 12px 0 rgba(121, 155, 254, 0.25);
-    box-shadow: 0 2px 5px 0 rgba(55, 161, 255, 0.26), 0 4px 12px 0 rgba(121, 155, 254, 0.25); }
-
-.form-elegant .z-depth-1-half,
-.form-elegant .btn:hover {
-    -webkit-box-shadow: 0 5px 11px 0 rgba(85, 182, 255, 0.28), 0 4px 15px 0 rgba(36, 133, 255, 0.15);
-    box-shadow: 0 5px 11px 0 rgba(85, 182, 255, 0.28), 0 4px 15px 0 rgba(36, 133, 255, 0.15); }
-
-.form-elegant .modal-header {
-    border-bottom: none; }
-
-.modal-dialog .form-elegant .btn .fab {
-    color: #2196f3!important; }
-
-.form-elegant .modal-body, .form-elegant .modal-footer {
-    font-weight: 400; 
-}
-/*Elegante modal login*/
-
-  /* Footer */
-   #footer {
-       background: #34b3a0 !important;
-       text-shadow: 2px 2px 2px #333;
-       padding: 10px 10px 10px 10px;
-       left: 0px;
-       bottom: 0px;
-       width: 100%;
-       position: relative;
-       z-index: 99999;
-   }
-   #footer h5{
-   	padding-left: 10px;
-       border-left: 3px solid #eeeeee;
-       padding-bottom: 6px;
-       margin-bottom: 20px;
-       color:#ffffff;
-   }
-   #footer a {
-       color: #ffffff;
-       text-decoration: none !important;
-       background-color: transparent;
-       -webkit-text-decoration-skip: objects;
-   }
-   #footer ul.social li{
-   	padding: 3px 0;
-   }
-   #footer ul.social li a i {
-    margin-right: 5px;
-    font-size:25px;
-    -webkit-transition: .5s all ease;
-    -moz-transition: .5s all ease;
-    transition: .5s all ease;
-   }
-   #footer ul.social li:hover a i {
-   	font-size:30px;
-   	margin-top:-10px;
-   }
-   #footer ul.social li a,
-   #footer ul.quick-links li a{
-   	color:#ffffff;
-   }
-   #footer ul.social li a:hover{
-   	color:#eeeeee;
-   }
-   #footer ul.quick-links li{
-   	padding: 3px 0;
-   	-webkit-transition: .5s all ease;
-   	-moz-transition: .5s all ease;
-   	transition: .5s all ease;
-   }
-   #footer ul.quick-links li:hover{
-   	padding: 3px 0;
-   	margin-left:5px;
-   	font-weight:700;
-   }
-   #footer ul.quick-links li a i{
-   	margin-right: 5px;
-   }
-   #footer ul.quick-links li:hover a i {
-       font-weight: 700;
-   }
-
-   @media (max-width:767px){
-   	#footer h5 {
-       padding-left: 0;
-       border-left: transparent;
-       padding-bottom: 0px;
-       margin-bottom: 10px;
-   }
-   }
-/*footer*/
-
-/*Index content (courses)*/
-section.main-content-index{
-    width: 1200px;
-    margin: auto;
-    display: flex;
-    flex-flow: wrap;
-    flex-direction: row;
-}
-section.main-content-index div.main-content-courses{
-    width: 885px;
-    margin-right: 15px;
-    margin-top: 20px;
 
 }
-section.main-content-index div.main-content-courses a{
-    text-decoration: none;
+section.container-courses{
+  width: 100vw;
+}
+section.container-courses div.courses{
+width: 1200px;
+margin:auto;
+margin-top:20px;
+margin-bottom:20px;
+display: flex;
+flex-wrap: wrap;
+}
+section.container-courses div.courses div.list-courses{
+  width:250px;
+  margin:20px;
+  padding:15px;
+}
+section.container-courses div.courses div.list-courses:hover {
+  transform: scale(1.05);
+  border: 1px solid #34b3a0;
+  box-shadow: 0px 0px 10px #666;
+}
+img.card-img-top{
+  width:200px;
+  margin-left:10px;
+}
 
-}
-section.main-content-index div.main-content-courses div.courses{
-    min-height: 200px;
-    background-image: url("/img/react.png");
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    border-radius: 3px;
-    box-shadow: 0 5px 5px 0 rgba(52, 179, 160, .5);
-    margin-bottom: 20px;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-}
-section.main-content-index div.main-content-courses div.courses h4{
+h3 {
   font-family: 'Roboto', sans-serif;
-  font-size: 20px;
-  font-weight: bold;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: normal;
-  letter-spacing: normal;
+  font-size:16px;
+  text-transform: uppercase;
+}
+small{
+  font-family: 'Roboto', sans-serif;
+}
+a.btn{
+background-color:rgba(52, 179, 160, .8);
+color:#ffffff;
+padding: 15px;
+font-family: 'Roboto', sans-serif;
+border-radius: 5px;
+text-transform: uppercase;
+
+}
+a.btn:hover{
+  background-color: rgba(52, 179, 160, 1);
   color: #ffffff;
 }
-section.main-content-index div.main-content-courses div.courses span{
-    color: #f2f2f2;
-    padding: 20px;
-    text-decoration: none;
-    font-family: 'Roboto', sans-serif;
-    font-size: 20px;
-    height: 20px;
-    font-weight: 500;
-    margin-bottom: 20px;
+@media only screen and (min-width:992px) and (max-width:1200px){
+  section.container-courses div.courses{
+  width: 992px;
+  }
 }
-section.main-content-index div.main-content-others{
-    width: 285px;
-    margin-right: 15px;
-    margin-top: 20px;
-
+@media only screen and (min-width:768px) and (max-width:992px){
+  section.container-courses div.courses{
+  width: 768px;
+  }
+  section.container-courses div.courses div.list-courses{
+    width:200px;
+  }
+  img.card-img-top{
+    width:150px;
+  }
 }
-section.main-content-index div.main-content-others div.fa-plugin-facebok{
-    border-radius: 3px;
-    box-shadow: 0 5px 5px 0 rgba(52, 179, 160, .5);
-    margin-bottom: 20px;
-    padding-left: 26px;
+@media only screen and (min-width:480px) and (max-width:768px){
+  section.container-courses div.courses{
+  width: 480px;
+  }
+  section.container-courses div.courses div.list-courses{
+    width:200px;
+  }
+  img.card-img-top{
+    width:150px;
+  }
 }
-/*Responsive courses*/
-@media only screen and (min-width: 992px)and (max-width: 1200px){
-section.main-content-index{
-    width: 992px;
-    margin: auto;
-    display: flex;
-    flex-flow: wrap;
-    flex-direction: row;
+@media only screen and (min-width:320px) and (max-width:480px){
+  section.container-courses div.courses{
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  }
+  section.container-courses div.courses div.list-courses{
+    width:200px;
+  }
+  img.card-img-top{
+    width:150px;
+  }
 }
-section.main-content-index div.main-content-courses{
-    width: 729px;
-    margin-right: 15px;
-    margin-top: 20px;
-
-}
-section.main-content-index div.main-content-others{
-    width: 233px;
-    margin-right: 15px;
-    margin-top: 20px;
-
-}
-section.main-content-index div.main-content-others div.fa-plugin-facebok{
-    padding-left: 0;
-}
-}
-/*Responsive courses*/
-@media only screen and (min-width: 768px)and (max-width: 992px){
-section.main-content-index{
-    width: 768px;
-    margin: auto;
-    display: flex;
-    flex-flow: wrap;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-section.main-content-index div.main-content-courses{
-    width: 768px;
-    margin-right: 0;
-    margin-top: 20px;
-
-}
-section.main-content-index div.main-content-others{
-    width: 285px;
-    margin-right: 0;
-    margin-top: 20px;
-
-}
-section.main-content-index div.main-content-others div.fa-plugin-facebok{
-    padding-left: 26px;
-}
-}
-@media only screen and (min-width: 576px) and (max-width: 768px){
-section.main-content-index{
-    width: 576px;
-    margin: auto;
-    display: flex;
-    flex-flow: wrap;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-section.main-content-index div.main-content-courses{
-    width: 576px;
-    margin-right: 0;
-    margin-top: 20px;
-
-}
-section.main-content-index div.main-content-others{
-    width: 285px;
-    margin-right: 0;
-    margin-top: 20px;
-
-}
-section.main-content-index div.main-content-others div.fa-plugin-facebok{
-    padding-left: 26px;
-}   
-}
-@media only screen and (min-width: 480px) and (max-width: 576px){
-section.main-content-index{
-    width: 480px;
-    margin: auto;
-    display: flex;
-    flex-flow: wrap;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-section.main-content-index div.main-content-courses{
-    width: 480px;
-    margin-right: 0;
-    margin-top: 20px;
-
-}
-section.main-content-index div.main-content-others{
-    width: 285px;
-    margin-right: 0;
-    margin-top: 20px;
-
-}
-section.main-content-index div.main-content-others div.fa-plugin-facebok{
-    padding-left: 26px;
-}   
-}
-
-@media only screen and (min-width: 320px) and (max-width: 480px){
-section.main-content-index{
-    width: 320px;
-    margin: auto;
-    display: flex;
-    flex-flow: wrap;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-section.main-content-index div.main-content-courses{
-    width: 320px;
-    margin-right: 0;
-    margin-top: 20px;
-
-}
-section.main-content-index div.main-content-others{
-    width: 285px;
-    margin-right: 0;
-    margin-top: 20px;
-
-}
-section.main-content-index div.main-content-others div.fa-plugin-facebok{
-    padding-left: 26px;
-}   
-}
-@media only screen and (min-width: 0px) and (max-width: 320px){
-section.main-content-index{
-    max-width: 100vw;
-    margin: auto;
-    display: flex;
-    flex-flow: wrap;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-section.main-content-index div.main-content-courses{
-    max-width: 100vw;
-    margin-right: 0;
-    margin-top: 20px;
-
-}
-section.main-content-index div.main-content-others{
-    max-width: 100vw;
-    margin-right: 0;
-    margin-top: 20px;
-
-}
-section.main-content-index div.main-content-others div.fa-plugin-facebok{
-    padding-left: 0;
-}   
+@media only screen and (max-width:320px){
+  section.container-courses div.courses{
+  max-width: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  }
+  section.container-courses div.courses div.list-courses{
+    max-width:200px;
+  }
+  img.card-img-top{
+    max-width:150px;
+  }
 }
  /* ==========================================================================
    Helper classes
@@ -958,7 +743,7 @@ section.main-content-index div.main-content-others div.fa-plugin-facebok{
   clear: both;
 }
 
- 
+
 /* ==========================================================================
    EXAMPLE Media Queries for Responsive Design.
    These examples override the primary ('mobile first') styles.
@@ -976,7 +761,7 @@ section.main-content-index div.main-content-others div.fa-plugin-facebok{
     /* Style adjustments for high resolution devices */
 }
 
- 
+
 /* ==========================================================================
    Print styles.
    Inlined to avoid the additional HTTP request:
@@ -1052,5 +837,3 @@ section.main-content-index div.main-content-others div.fa-plugin-facebok{
         page-break-after: avoid;
     }
 }
-
-
