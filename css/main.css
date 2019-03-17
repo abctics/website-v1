@@ -98,7 +98,7 @@ textarea {
    Author's custom styles
    ========================================================================== */
 header{
-    max-width: 100vw;
+    max-width: 100%;
     -webkit-box-shadow: -2px -2px 32px -1px rgba(52,179,160,1);
     -moz-box-shadow: -2px -2px 32px -1px rgba(52,179,160,1);
     box-shadow: -2px -2px 32px -1px rgba(52,179,160,1);
@@ -173,7 +173,7 @@ section.header-responsive div.parent-menu-responsive nav ul{
   padding-left: 0;
   justify-content: flex-end;
   margin: 0 auto;
-  width: 100vw;
+  width: 100%;
 }
 section.header-responsive div.parent-menu-responsive nav ul li{
 cursor: pointer;
@@ -224,13 +224,13 @@ div.parent-menu{
 }
 @media only screen and (min-width: 768px) and (max-width: 992px){
 div.container-header{
-    width: 100vw;
+    width: 100%;
 }
 div.parent-logo{
-    width: 100vw;
+    width: 100%;
 }
 div.parent-logo {
-    width: 100vw;
+    width: 100%;
     display: flex;
     flex-flow: wrap;
 }
@@ -263,7 +263,7 @@ div.container-header div.parent-menu{
 section.header-responsive{
 }
 div.parent-menu{
-    width: 100vw;
+    width: 100%;
 }
 div.parent-menu nav ul{
   display: flex;
@@ -290,13 +290,13 @@ div.parent-menu nav ul li a{
 
 @media only screen and (min-width: 576px) and (max-width: 768px){
 div.container-header{
-    width: 100vw;
+    width: 100%;
 }
 div.parent-logo{
-    width: 100vw;
+    width: 100%;
 }
 div.parent-logo {
-    width: 100vw;
+    width: 100%;
     display: flex;
     flex-flow: wrap;
 }
@@ -329,7 +329,7 @@ div.container-header div.parent-menu{
 section.header-responsive{
 }
 div.parent-menu{
-    width: 100vw;
+    width: 100%;
 }
 div.parent-menu nav ul{
   display: flex;
@@ -358,13 +358,13 @@ div.parent-menu nav ul li a{
 
 @media only screen and (min-width: 480px) and (max-width: 576px){
 div.container-header{
-    width: 100vw;
+    width: 100%;
 }
 div.parent-logo{
-    width: 100vw;
+    width: 100%;
 }
 div.parent-logo {
-    width: 100vw;
+    width: 100%;
     display: flex;
     flex-flow: wrap;
 }
@@ -396,7 +396,7 @@ div.container-header div.parent-menu{
 section.header-responsive{
 }
 div.parent-menu{
-    width: 100vw;
+    width: 100%;
 }
 div.parent-menu nav ul{
   display: flex;
@@ -424,13 +424,13 @@ div.parent-menu nav ul li a{
 
 @media only screen and (min-width: 320px) and (max-width: 480px){
 div.container-header{
-    width: 100vw;
+    width: 100%;
 }
 div.parent-logo{
-    width: 100vw;
+    width: 100%;
 }
 div.parent-logo {
-    width: 100vw;
+    width: 100%;
     display: flex;
     flex-flow: wrap;
 }
@@ -463,7 +463,7 @@ div.container-header div.parent-menu{
 section.header-responsive{
 }
 div.parent-menu{
-    width: 100vw;
+    width: 100%;
 }
 div.parent-menu nav ul{
   display: flex;
@@ -492,13 +492,13 @@ div.parent-logo div.container-logo h1{
 }
 @media only screen and (min-width: 0px)and (max-width: 320px){
 div.container-header{
-    width: 100vw;
+    width: 100%;
 }
 div.parent-logo{
-    width: 100vw;
+    width: 100%;
 }
 div.parent-logo {
-    width: 100vw;
+    width: 100%;
     display: flex;
     flex-flow: wrap;
 }
@@ -531,7 +531,7 @@ div.container-header div.parent-menu{
 section.header-responsive{
 }
 div.parent-menu{
-    width: 100vw;
+    width: 100%;
 }
 div.parent-menu nav ul{
   display: flex;
@@ -560,7 +560,7 @@ div.parent-logo div.container-logo h1{
 
 }
 section.container-courses{
-  width: 100vw;
+  width: 100%;
 }
 section.container-courses div.courses{
 width: 1200px;
@@ -605,6 +605,10 @@ text-transform: uppercase;
 a.btn:hover{
   background-color: rgba(52, 179, 160, 1);
   color: #ffffff;
+}
+.btn-link{
+  text-decoration: none !important;
+  color: #34B39C !important;
 }
 @media only screen and (min-width:992px) and (max-width:1200px){
   section.container-courses div.courses{

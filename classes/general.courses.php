@@ -93,7 +93,7 @@ class Course
         <div class="card-body">
         <small>'.$row['CourseDescription'].'</small>
         </div>
-        <a href="my-courses?id='.$row['courseID'].'" class="btn">Ver detalle</a>
+        <a href="course?id='.$row['courseID'].'" class="btn">Ver detalle</a>
       </div>
       ';
       return $base;
