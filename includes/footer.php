@@ -3,6 +3,8 @@
   <script>window.jQuery || document.write('<script src="js/vendor/jquery-3.3.1.min.js"><\/script>')</script>
   <script src="js/plugins.js"></script>
   <script src="js/main.js"></script>
+  <!--main js-->
+  <script src="js/ajax-request.js"></script>
    <!--bootstrap-->
  <script type="text/javascript" src="/css/bootstrap/js/bootstrap.min.js"></script>
   <!--Facebook para desarrolladores-->

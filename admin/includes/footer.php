@@ -21,6 +21,11 @@
 <script src="/admin/js/adminlte.min.js"></script>
 <!--Init ckeditor-->
 <script src="/admin/ckeditor/ckeditor.js"></script>
+<!--ajax request-->
+<script src="/admin/js/ajax-request.js"></script>
+<!--main js admin-->
+<script src="/admin/js/main.js"></script>
+
 <!-- page script -->
    <script>
         // Replace the <textarea id="editor1"> with a CKEditor

@@ -6,13 +6,13 @@ $( "a.main-menu-link" ).click(function() {
     $('a.main-menu-link').removeClass("active");
     $(this).addClass("active");
 });
-    
+
 //Click on image and add class to menu
 $( ".parent-logo a" ).click(function() {
     $('a.main-menu-link').removeClass("active");
     var li=$('.parent-menu .main-menu ul');
     $(li).children().children(":first").addClass("active");
-    
+
 });
 
     //Display header responsive
@@ -41,5 +41,5 @@ $( ".menu-item-responsive" ).click(function() {
 $('.menu-item-responsive').removeClass("active");
 $(this).addClass("active");
 });
-    
+
     });
