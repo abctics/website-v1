@@ -2,6 +2,8 @@
 include_once $_SERVER["DOCUMENT_ROOT"] . "/managment/base.php";
 include_once $_SERVER["DOCUMENT_ROOT"] . "/managment/sessionmanager.php";
 include_once $_SERVER["DOCUMENT_ROOT"] . "/admin/includes/header.php";
+include_once $_SERVER["DOCUMENT_ROOT"] . "/classes/general.courses.php";
+$course=new Course($db);
 ?>
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -15,7 +17,28 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/admin/includes/header.php";
 
     <!-- Main content -->
     <section class="content">
-    </section>
+      <div class="container">
+        <div class="box" style="min-height:100vh;">
+        <div class="row">
+          <div class="col-sm-12">
+            <table class="table table-bordered" id="example1">
+              <thead>
+                <tr>
+                  <th scope="col">C&oacute;digo</th>
+                  <th scope="col">T&iacute;tulo</th>
+                  <th scope="col">Descripci&oacute;n</th>
+                  <th scope="col">Estado</th>
+                </tr>
+              </thead>
+              <tbody>
+                <?php $course->getCoursesListAdmin(); ?>
+              </tbody>
+            </table>
+         </div>
+      </div>
+    </div>
+  </div>
+  </section>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->

@@ -575,6 +575,9 @@ section.container-courses div.courses div.list-courses{
   margin:20px;
   padding:15px;
 }
+div.list-courses h3{
+  text-align: center;
+}
 section.container-courses div.courses div.list-courses:hover {
   transform: scale(1.05);
   border: 1px solid #34b3a0;
@@ -667,6 +670,24 @@ a.btn:hover{
     max-width:150px;
   }
 }
+
+.section-container{
+  display:flex;
+  flex-direction:row;
+  width:96%;
+  margin:auto;
+  margin-top:20px;
+}
+@media only screen  and (max-width:768px){
+  .section-container{
+    flex-direction:column;
+  }
+  .accordion,.topic-container{
+    width: 100% !important;
+  }
+
+}
+
  /* ==========================================================================
    Helper classes
    ========================================================================== */

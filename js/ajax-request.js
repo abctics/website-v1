@@ -1,23 +1,24 @@
-function getTopic() {
-$('.list-group-item').click(function(){
-var topic_ID=$(this).children('span').text();
-var request_type='topic_get';
-$.ajax({
-    url: 'PHP-ajax-request/request.php',
-    dataType: "json",
-    type: 'GET',
-    data:{
-      topic_ID:topic_ID,
-      request_type:request_type
-    },
-    success: function(response){
-      var array = $.parseJSON(response);
-      $('.title').html(array[0]['tittle-content']);
-      $('.topic-content').html(array[0]['content']);
-    },
-    error: function () {
-    }
-});
-});
+
+  function getTopic() {
+    setTimeout(function(){
+      var imgs = $('.topic-content').find('img');
+      $( imgs ).each(function( index ) {
+        $( imgs ).eq( index ).css( "width", "90%" );
+        $( imgs ).eq( index ).css( "margin", "auto" );
+        $( imgs ).eq( index ).css( "display", "block" );
+        $( imgs ).eq( index ).css( "border-radius", "2px" );
+      });
+    $('.list-group-item').click(function(){
+      var imgs = $('.topic-content').find('img');
+      $( imgs ).each(function( index ) {
+        $( imgs ).eq( index ).css( "width", "90%" );
+        $( imgs ).eq( index ).css( "margin", "auto" );
+        $( imgs ).eq( index ).css( "display", "block" );
+        $( imgs ).eq( index ).css( "border-radius", "2px" );
+      });
+
+    });
+  }, 10);
 };
+
 getTopic();
