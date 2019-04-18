@@ -6,7 +6,7 @@
               <?php
               include_once "classes/general.courses.php";
               $course=new Course($db);
-              $course->getCourses()
+              $course->getCourses();
               ?>
           </div>
   </section>
