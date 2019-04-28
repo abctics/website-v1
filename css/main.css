@@ -158,47 +158,13 @@ div.parent-menu nav ul li a{
     height: 20px;
     font-weight: 500;
 }
-div.parent-menu nav ul li a.active{
+ a.active{
     background-color: #34b3a0;
     color: #ffffff !important;
 }
-section.header-responsive{
-    display: none;
-}
-/*Header responsive*/
-section.header-responsive div.parent-menu-responsive nav ul{
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  padding-left: 0;
-  justify-content: flex-end;
-  margin: 0 auto;
-  width: 100%;
-}
-section.header-responsive div.parent-menu-responsive nav ul li{
-cursor: pointer;
-}
-section.header-responsive div.parent-menu-responsive nav ul li.active{
-background-color:  #34b3a0;
-}
-section.header-responsive div.parent-menu-responsive nav ul li.active a{
-color: #ffffff;
-}
-section.header-responsive div.parent-menu-responsive nav ul li{
-    list-style-type: none;
-    float: left;
-    margin: 0;
-    border-bottom: 1px solid #34b3a0;
-    padding: 10px;
-}
-section.header-responsive div.parent-menu-responsive nav ul li a{
-    color: #34b3a0;
-    margin: 40px 20px 40px 20px;
-    text-decoration: none;
-    font-family: 'Roboto', sans-serif;
-    font-size: 20px;
-    height: 20px;
-    font-weight: 500;
+button.active{
+   background-color: #34b3a0;
+   color: #ffffff !important;
 }
 @media only screen and (min-width: 1200px) {
 div.parent-logo{
@@ -260,8 +226,7 @@ div.parent-logo div.container-hamburger span{
 div.container-header div.parent-menu{
     display: none;
 }
-section.header-responsive{
-}
+
 div.parent-menu{
     width: 100%;
 }
@@ -326,8 +291,7 @@ div.parent-logo div.container-hamburger span{
 div.container-header div.parent-menu{
     display: none;
 }
-section.header-responsive{
-}
+
 div.parent-menu{
     width: 100%;
 }
@@ -393,8 +357,7 @@ div.parent-logo div.container-hamburger span{
 div.container-header div.parent-menu{
     display: none;
 }
-section.header-responsive{
-}
+
 div.parent-menu{
     width: 100%;
 }
@@ -460,8 +423,7 @@ div.parent-logo div.container-hamburger span{
 div.container-header div.parent-menu{
     display: none;
 }
-section.header-responsive{
-}
+
 div.parent-menu{
     width: 100%;
 }
@@ -528,8 +490,7 @@ div.parent-logo div.container-hamburger span{
 div.container-header div.parent-menu{
     display: none;
 }
-section.header-responsive{
-}
+
 div.parent-menu{
     width: 100%;
 }
@@ -565,7 +526,7 @@ section.container-courses{
 section.container-courses div.courses{
 width: 1200px;
 margin:auto;
-margin-top:20px;
+margin-top:80px;
 margin-bottom:20px;
 display: flex;
 flex-wrap: wrap;
@@ -685,7 +646,16 @@ a.btn:hover{
   .accordion,.topic-container{
     width: 100% !important;
   }
-
+  .accordion{
+    display: none;
+  }
+  .topic-container{
+    border:0 !important;
+    margin:0 !important;
+   }
+   .company-title{
+     display: none !important;
+   }
 }
 
  /* ==========================================================================

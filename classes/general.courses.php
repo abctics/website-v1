@@ -40,7 +40,7 @@ class Course
         $icon = $_POST['icon'];
 
         // Create course
-        $sql = "INSERT INTO courses (courseTitle, CourseDescription, icon)
+        $sql = "INSERT INTO courses (courseTitle, courseDescription, icon)
                 VALUES (:title, :description, :icon)";
 
         if ($stmt = $this->_db->prepare($sql)) {
@@ -67,49 +67,35 @@ class Course
     }
     public function getCourses()
     {
-      $sql="SELECT* FROM courses";
+      $sql="SELECT * FROM courses";
       try {
           $stmt = $this->_db->prepare($sql);
           $stmt->execute();
-          $rows = $stmt->fetchAll();
-          foreach ($rows as $row) {
-            echo $this->formatCourses($row);
-          }
-
-
-
+          $courses = $stmt->fetchAll();
+          return $courses;
           $stmt->closeCursor();
       } catch (PDOException $e) {
           return FALSE;
       }
 
     }
-    private function formatCourses($row){
-      $sql="SELECT topicID,topics.moduleID FROM topics,modules
+    public function getModulesAndTopics($courseID){
+      $sql="SELECT topicID,topics.moduleID
+            FROM topics,modules
             WHERE topics.moduleID = modules.moduleID
-            AND modules.courseID =:cid";
+            AND modules.courseID =:cid
+            ORDER BY modules.moduleID ASC
+            LIMIT 1 ";
       try {
           $stmt = $this->_db->prepare($sql);
-          $stmt->bindParam(':cid', $row['courseID'], PDO::PARAM_STR);
+          $stmt->bindParam(':cid', $courseID, PDO::PARAM_STR);
           $stmt->execute();
-          $newRow = $stmt->fetch();
-          $topicID = $newRow['topicID'];
-          $moduleID = $newRow['moduleID'];
+          $formatCourses = $stmt->fetch();
+          return $formatCourses;
           $stmt->closeCursor();
       } catch (PDOException $e) {
           return FALSE;
       }
-      $base = '
-      <div class="card list-courses">
-        <h3>'.$row['courseTitle'].'</h3>
-        <img class="card-img-top" src="/img/'.$row['icon'].'.png" alt="Imagen curso">
-        <div class="card-body">
-        <small>'.$row['CourseDescription'].'</small>
-        </div>
-        <a href="/course?id='.$row['courseID'].'&moduleid='.$moduleID.''.'&topicid='.$topicID.'" class="btn">Ver detalle</a>
-      </div>
-      ';
-      return $base;
     }
 
     //Get coursesList
@@ -141,7 +127,7 @@ class Course
       <tr>
         <th scope="row"><a href="course?id='.$row['courseID'].'" class="text-danger">'.$row['courseID'].'</a></th>
         <td>'.$row['courseTitle'].'</td>
-        <td>'.$row['CourseDescription'].'</td>
+        <td>'.$row['courseDescription'].'</td>
         <td>'.$status.'</td>
       </tr>
       ';
@@ -173,7 +159,7 @@ class Course
    private function updateCourseAdmin()
 {
     $sql = "UPDATE courses
-            SET courseTitle=:title,CourseDescription=:description,icon=:icon
+            SET courseTitle=:title,courseDescription=:description,icon=:icon
             WHERE courseID=:cid";
     try
     {
