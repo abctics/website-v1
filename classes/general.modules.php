@@ -96,103 +96,223 @@ class Module
           if($stmt=$this->_db->prepare($sql)){
             $stmt->bindParam(':cid', $courseID, PDO::PARAM_STR);
             $stmt->execute();
-            $count=1;
-            $ret = '';
-            $rows=$stmt->fetchAll();
-            foreach ($rows as $row) {
-              if($countMid != 0 && $countMid == intval($row['moduleID'])){
-                  $ret = $ret . $this->formatModulesData($row, $count, true);
-              } else {
-                  $ret = $ret . $this->formatModulesData($row, $count);
-              }
-              $count=$count+1;
-
-            }
+            $modules=$stmt->fetchAll();
+            return $modules;
             $stmt->closeCursor();
-            return $ret;
         }
-  }
-  private function formatModulesData($row,$count,$toggle = false)
-  {
-    if (!$toggle) {
-      $base='
-      <div class="card">
-        <div class="card-header" id="headingTwo">
-          <h5 class="mb-0">
-            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo'.$count.'" aria-expanded="false" aria-controls="collapseTwo">
-              '.$row['moduleTitle'].'
-            </button>
-          </h5>
-        </div>
-        <div id="collapseTwo'.$count.'" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-          <div class="card-body">
-            <ul class="list-group list-group-flush">
-                '.$this->getModulesContent($row['moduleID']).'
-            </ul>
-           </div>
-        </div>
-      </div>
-      ';
-    }else {
-      $base = '<div class="card" id="module_id_'.$row['moduleID'].'">
-                  <div class="card-header" id="headingTwo">
-                    <h5 class="mb-0">
-                      <button class="btn btn-link " data-toggle="collapse" data-target="#collapseTwo'.$count.'" aria-expanded="true" aria-controls="collapseTwo">
-                        '.$row['moduleTitle'].'
-                      </button>
-                    </h5>
-                  </div>
-                  <div id="collapseTwo'.$count.'" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordion">
-                    <div class="card-body">
-                      <ul class="list-group list-group-flush">
-                          '.$this->getModulesContent($row['moduleID'],$_GET['topicid']).'
-                      </ul>
-                     </div>
-                  </div>
-            </div>
-      ';
-    }
-    return $base;
   }
   public function getModulesContent($moduleID,$countTid = 0)
   {
-    $sql="SELECT topicID,topicTitle,topicContent,modules.courseID,modules.moduleID FROM topics,modules,courses
+    $sql="SELECT topicID,topicTitle,topicContent,modules.courseID,modules.moduleID
+          FROM topics,modules,courses
           WHERE topics.moduleID = modules.moduleID
           AND modules.courseID = courses.courseID
           AND modules.moduleID=:mid";
           if($stmt=$this->_db->prepare($sql)){
             $stmt->bindParam(':mid', $moduleID, PDO::PARAM_STR);
             $stmt->execute();
-            $count=1;
-            $ret='';
-            $rows=$stmt->fetchAll();
-            foreach ($rows as $row) {
-              if ($countTid != 0 && $countTid == intval($row['topicID'])) {
-                $ret = $ret . $this->formatModulesContent($row,$count, true);
-              }else {
-                $ret = $ret . $this->formatModulesContent($row,$count);
-                $ret = $ret;
-              }
-              $count = $count+1;
-            }
-            return $ret;
+            $modulesContent = $stmt->fetchAll();
+            return $modulesContent;
             $stmt->closeCursor();
 
           }
     }
-    private function formatModulesContent($row,$count,$toggle = false)
+
+    public function getLessonNavigationNext($topicID)
     {
-      if (!$toggle) {
-        $base='
-        <li class="list-group-item"><a href="/course?id='.$row['courseID'].'&moduleid='.$row['moduleID'].'&topicid='.$row['topicID'].'">'.$row['topicTitle'].'</a></li>
-        ';
-      }else {
-        $base='
-        <li id="topic_id_'.$row['topicID'].'" class="list-group-item" style="background-color:#204056;"><a href="/course?id='.$row['courseID'].'&moduleid='.$row['moduleID'].'&topicid='.$row['topicID'].'" style="color:#ffffff;">'.$row['topicTitle'].'</a></li>
-        ';
+      $sql="SELECT (topicID) AS nextTopicID,topics.moduleID,topicTitle
+            FROM topics
+            WHERE topics.moduleID = (SELECT topics.moduleID FROM topics WHERE topics.topicID=:tid)
+            AND topicID>:tid";
+      try {
+        $stmt = $this->_db->prepare($sql);
+        $stmt->bindParam(':tid', $topicID, PDO::PARAM_STR);
+        $stmt->execute();
+        $nextTopicID = $stmt->fetch();
+        return $nextTopicID;
+        $stmt->closeCursor();
+
+      } catch (PDOException $e) {
+
       }
 
-      return $base;
+    }
+    public function getModulesNavigationNext($moduleID)
+    {
+      $sql="SELECT MIN(modules.moduleID) AS moduleID,topicID,topicTitle
+            FROM topics,modules
+            WHERE modules.courseID = (SELECT modules.courseID FROM modules WHERE modules.moduleID=:mid)
+            AND topics.moduleID = modules.moduleID
+            AND modules.moduleID>:mid";
+      try {
+        $stmt = $this->_db->prepare($sql);
+        $stmt->bindParam(':mid', $moduleID, PDO::PARAM_STR);
+        $stmt->execute();
+        $nextModuleID = $stmt->fetch();
+        return $nextModuleID;
+        $stmt->closeCursor();
+
+      } catch (PDOException $e) {
+
+      }
+
+    }
+
+    public function getModulesNavigationPreviuos($moduleID)
+    {
+      $sql="SELECT MAX(modules.moduleID) AS moduleID
+            FROM topics,modules
+            WHERE modules.courseID = (SELECT modules.courseID FROM modules WHERE modules.moduleID=:mid)
+            AND topics.moduleID = modules.moduleID
+            AND modules.moduleID<:mid";
+      try {
+        $arrayFormat = array();
+        $stmt = $this->_db->prepare($sql);
+        $stmt->bindParam(':mid', $moduleID, PDO::PARAM_STR);
+        $stmt->execute();
+        $previousModuleID = $stmt->fetch();
+        $stmt->closeCursor();
+        $sql="SELECT MAX(topics.topicID) AS topicID
+              FROM topics
+              WHERE topics.moduleID=:mid";
+        try {
+          $stmt = $this->_db->prepare($sql);
+          $stmt->bindParam(':mid', $previousModuleID['moduleID'], PDO::PARAM_STR);
+          $stmt->execute();
+          $maxTopicID = $stmt->fetch();
+          $stmt->closeCursor();
+          $sql="SELECT topicTitle
+                FROM topics
+                WHERE topicID=:tid";
+          try {
+            $stmt = $this->_db->prepare($sql);
+            $stmt->bindParam(':tid', $maxTopicID['topicID'], PDO::PARAM_STR);
+            $stmt->execute();
+            $topicTitle = $stmt->fetch();
+            if ($topicTitle == FALSE) {
+              return FALSE;
+            }
+            $arrayFormat = array_merge($maxTopicID,$previousModuleID,$topicTitle);
+            return $arrayFormat;
+            $stmt->closeCursor();
+          } catch (\Exception $e) {
+
+          }
+        } catch (\Exception $e) {
+
+        }
+
+
+      } catch (PDOException $e) {
+
+      }
+
+    }
+
+    public function getCourseNavigationNext($courseID)
+    {
+      $sql="SELECT MAX(topics.moduleID) AS maxModuleID
+            FROM topics,modules
+            WHERE topics.moduleID = modules.moduleID
+            AND modules.courseID=:cid
+            ";
+      try {
+        $stmt = $this->_db->prepare($sql);
+        $stmt->bindParam(':cid', $courseID, PDO::PARAM_STR);
+        $stmt->execute();
+        $maxModuleID = $stmt->fetch();
+        $stmt->closeCursor();
+        $sql="SELECT MAX(topics.topicID) AS maxTopicID
+              FROM topics
+              WHERE topics.moduleID=:mid
+              ";
+      try {
+        $stmt = $this->_db->prepare($sql);
+        $stmt->bindParam(':mid', $maxModuleID['maxModuleID'], PDO::PARAM_STR);
+        $stmt->execute();
+        $maxTopicID = $stmt->fetch();
+        return $maxTopicID;
+        $stmt->closeCursor();
+      } catch (\Exception $e) {
+
+      }
+
+      } catch (PDOException $e) {
+
+      }
+
+    }
+
+    public function getCourseNavigationPrevious($courseID)
+    {
+      $sql="SELECT MIN(topics.moduleID) AS minModuleID
+            FROM topics,modules
+            WHERE topics.moduleID = modules.moduleID
+            AND modules.courseID=:cid
+            ";
+      try {
+        $stmt = $this->_db->prepare($sql);
+        $stmt->bindParam(':cid', $courseID, PDO::PARAM_STR);
+        $stmt->execute();
+        $minModuleID = $stmt->fetch();
+        $stmt->closeCursor();
+        $sql="SELECT MIN(topics.topicID) AS minTopicID
+              FROM topics
+              WHERE topics.moduleID=:mid
+              ";
+      try {
+        $stmt = $this->_db->prepare($sql);
+        $stmt->bindParam(':mid', $minModuleID['minModuleID'], PDO::PARAM_STR);
+        $stmt->execute();
+        $minTopicID = $stmt->fetch();
+        return $minTopicID;
+        $stmt->closeCursor();
+      } catch (\Exception $e) {
+
+      }
+
+      } catch (PDOException $e) {
+
+      }
+
+    }
+
+    public function getLessonNavigationPrevious($topicID)
+    {
+      $sql="SELECT MAX(topicID) AS previuosTopicID,topics.moduleID
+            FROM topics
+            WHERE topics.moduleID = (SELECT topics.moduleID FROM topics WHERE topics.topicID=:tid)
+            AND topicID<:tid";
+        $arrayFormat = array();
+      try {
+        $stmt = $this->_db->prepare($sql);
+        $stmt->bindParam(':tid', $topicID, PDO::PARAM_STR);
+        $stmt->execute();
+        $previousTopicID = $stmt->fetch();
+        $stmt->closeCursor();
+        $sql="SELECT topicTitle
+              FROM topics
+              WHERE topicID=:tid";
+        try {
+          $stmt = $this->_db->prepare($sql);
+          $stmt->bindParam(':tid', $previousTopicID['previuosTopicID'], PDO::PARAM_STR);
+          $stmt->execute();
+          $topicTitle = $stmt->fetch();
+          if ($topicTitle == FALSE) {
+            return FALSE;
+          }
+          $arrayFormat = array_merge($topicTitle,$previousTopicID);
+          return $arrayFormat;
+          $stmt->closeCursor();
+        } catch (\Exception $e) {
+
+        }
+
+
+      } catch (PDOException $e) {
+
+      }
+
     }
 
     //Get coursesList

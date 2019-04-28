@@ -1,9 +1,9 @@
 <!doctype html>
-<html class="no-js" lang="">
+<html class="no-js" lang="es">
 
 <head>
   <meta charset="utf-8">
-  <title><?php if(!empty($pageTitle)) echo $pageTitle . " - "; ?>ABC<?php if(empty($pageTitle)) echo " – Desarrollo ABC"; ?></title>  <meta name="description" content="">
+  <title><?php if(!empty($pageTitle)) echo $pageTitle . " - "; ?>ABC<?php if(empty($pageTitle)) echo " – Alexander Benavides"; ?></title>  <meta name="description" content="">
  <link rel="shortcut icon" href="/img/logo.png" type="image/x-icon">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -27,38 +27,29 @@
   <![endif]-->
 
   <!-- Add your site or application content here -->
-<header class="main-header">
-      <div class="container-header">
-       <div class="parent-logo">
-       <div class="container-logo">
-        <a href="/index#" class="logo"><img src="img/logo.png" alt="abc" class="logo-img"></a>
-        <h1 class="company-title">Desarrollo ABC</h1>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light" style="position:fixed;width:100%;margin:0 auto;z-index:3;top:0;">
+    <a class="navbar-brand" href="/index#"><img src="/img/logo.png" alt="" width="40px"> </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/index#">Inicio <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/signup">Registrarse</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/login">Iniciar sesión</a>
+        </li>
+      </ul>
+      <!--<form class="form-inline my-2 my-lg-0" action="<?php echo $_SERVER['REQUEST_URI'];?>">-->
+        <div class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" autocomplete="off" type="search" placeholder="Busca un tema o curso" aria-label="Search">
+          <button class="btn nav-link-1 my-2 my-sm-0" type="submit" style="border:1px solid #ced4da;">Buscar</button>
+      <!-- </form> -->
        </div>
-       <div class="container-hamburger">
-        <span id="btn-menu" class="icon-menu">☰</span>
-       </div>
-       </div>
-       <div class="parent-menu">
-        <nav class="main-menu">
-          <ul>
-          <li class="main-menu-item"><a class="main-menu-link active" href="/index#">inicio</a></li>
-          <li class="main-menu-item"><a class="main-menu-link" href="#" data-toggle="modal" data-target="#modalRegisterForm">Registrarse</a></li>
-          <li class="main-menu-item"><a class="main-menu-link" href="#" data-toggle="modal" data-target="#elegantModalForm">Iniciar sesión</a></li>
-          <li class="main-menu-item"><a class="main-menu-link" href="#" data-toggle="modal" data-target="#modalContactForm">contacto</a></li>
-          </ul>
-        </nav>
-       </div>
-      </div>
-    </header>
-    <section class="header-responsive">
-       <div class="parent-menu-responsive">
-        <nav class="menu-responsive">
-          <ul>
-          <li class="menu-item-responsive active"><a class="menu-link-responsive" href="/index#">inicio</a></li>
-          <li class="menu-item-responsive" data-toggle="modal" data-target="#modalRegisterForm"><a class="menu-link-responsive" href="#" >Registrarse</a></li>
-          <li class="menu-item-responsive" data-toggle="modal" data-target="#elegantModalForm"><a class="menu-link-responsive" href="#" >Iniciar sesión</a></li>
-          <li class="menu-item-responsive" data-toggle="modal" data-target="#modalContactForm"><a class="menu-link-responsive" href="#" >contacto</a></li>
-          </ul>
-        </nav>
-       </div>
-    </section>
+    </div>
+  </nav>

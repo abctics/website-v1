@@ -105,37 +105,20 @@ class Topic
     }
 
     public function getTopic($topicID){
-      $sql = "SELECT *
-              FROM topics WHERE topicID=:tid";
+      $sql = "SELECT topicTitle,topicContent,moduleTitle
+              FROM topics,modules
+              WHERE topics.moduleID = modules.moduleID
+              AND topicID=:tid";
       try {
           $stmt = $this->_db->prepare($sql);
           $stmt->bindParam(':tid', $topicID, PDO::PARAM_STR);
           $stmt->execute();
-          $rows = $stmt->fetchAll();
+          $topic = $stmt->fetch();
+          return $topic;
           $stmt->closeCursor();
-          if (isset($_GET['request_type'])) {
-            return $rows;
-
-          }else {
-            foreach ($rows as $row) {
-              return $this-> formatTopic($row);
-            }
-          }
       } catch (PDOException $e) {
           return FALSE;
       }
-    }
-    private function formatTopic($row)
-    {
-      $base = '
-      <div class="tittle-content">
-      '.$row['topicTitle'].'
-      </div>
-      <div class="topic-content" style="width:100%;">
-      '.$row['topicContent'].'
-      </div>
-             ';
-      return $base;
     }
     //Get coursesList
     public function getTopicsListAdmin()

@@ -24,7 +24,7 @@ CREATE TABLE teachers (
 CREATE TABLE courses (
     courseID int AUTO_INCREMENT,
     courseTitle varchar(150) NOT NULL,
-    CourseDescription varchar(250) NOT NULL,
+    courseDescription varchar(250) NOT NULL,
     published tinyint(1) DEFAULT 0,
     icon varchar(50) NOT NUll,
     PRIMARY KEY (courseID)

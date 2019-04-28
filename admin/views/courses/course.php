@@ -46,7 +46,7 @@ $courseData=$course->getCourseContentAdmin($_GET['id']);
                             </div>
                                <div class="form-group">
                                 <label>Descripción</label>
-                                <textarea id="editor1" name="course_description"><?php echo $courseData['CourseDescription'];?></textarea>
+                                <textarea id="editor1" name="course_description"><?php echo $courseData['courseDescription'];?></textarea>
                                </div>
                             <div class="form-group">
                                 <label>Imágen</label>

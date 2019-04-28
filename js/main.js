@@ -2,38 +2,23 @@
 $( document ).ready(function() {
 
 //Add a class to menu
-$( "a.main-menu-link" ).click(function() {
-    $('a.main-menu-link').removeClass("active");
+$( "a.nav-link").click(function() {
+    $('a.nav-link').removeClass("active");
+    $('button.nav-link-1').removeClass("active");
     $(this).addClass("active");
 });
-
+$( "button.nav-link-1").click(function() {
+    $('button.nav-link-1').removeClass("active");
+    $('a.nav-link').removeClass("active");
+    $(this).addClass("active");
+});
 //Click on image and add class to menu
-$( ".parent-logo a" ).click(function() {
-    $('a.main-menu-link').removeClass("active");
-    var li=$('.parent-menu .main-menu ul');
-    $(li).children().children(":first").addClass("active");
+$( ".navbar-brand" ).click(function() {
+    $('a.nav-link').removeClass("active");
+    var ul=$('.navbar-nav');
+    $(ul).children().children(":first").addClass("active");
 
 });
-
-    //Display header responsive
-    var click=0;
-$( ".container-hamburger .icon-menu" ).click(function() {
-    click+=1;
-    if(click%2!=0){
-    $(".header-responsive").css("display","block");
-    }else{
-    $(".header-responsive").css("display","none");
-    }
-});
-$( window ).resize(function() {
-  if(click%2!=0){
-   if($( window ).width()>992){
-    $(".header-responsive").css("display","none");
-    }else{
-    $(".header-responsive").css("display","block");
-    }
-    }
-    });
 
 // Active for the second menu
     //Add a class to menu
