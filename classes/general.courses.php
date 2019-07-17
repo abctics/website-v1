@@ -67,11 +67,32 @@ class Course
     }
     public function getCourses()
     {
-      $sql="SELECT * FROM courses";
+      $sql="SELECT *
+            FROM courses";
       try {
           $stmt = $this->_db->prepare($sql);
           $stmt->execute();
-          $courses = $stmt->fetchAll();
+          $courses = $stmt->fetchAll(PDO::FETCH_CLASS);
+          return $courses;
+          $stmt->closeCursor();
+      } catch (PDOException $e) {
+          return FALSE;
+      }
+
+    }
+
+    public function getCoursesByStudent()
+    {
+      $sql="SELECT c.courseID,c.courseTitle,c.courseDescription,c.icon
+      FROM classrooms,studentsclassroom as stc,courses as c
+      WHERE classrooms.classroomID = stc.classroomID
+      AND classrooms.courseID = c.courseID
+      AND stc.studentID = (SELECT studentID FROM students WHERE email =:user)";
+      try {
+          $stmt = $this->_db->prepare($sql);
+          $stmt->bindParam(':user', $_SESSION['studentUsername'], PDO::PARAM_STR);
+          $stmt->execute();
+          $courses = $stmt->fetchAll(PDO::FETCH_CLASS);
           return $courses;
           $stmt->closeCursor();
       } catch (PDOException $e) {
@@ -85,12 +106,12 @@ class Course
             WHERE topics.moduleID = modules.moduleID
             AND modules.courseID =:cid
             ORDER BY modules.moduleID ASC
-            LIMIT 1 ";
+            LIMIT 1";
       try {
           $stmt = $this->_db->prepare($sql);
           $stmt->bindParam(':cid', $courseID, PDO::PARAM_STR);
           $stmt->execute();
-          $formatCourses = $stmt->fetch();
+          $formatCourses = $stmt->fetchAll(PDO::FETCH_CLASS);
           return $formatCourses;
           $stmt->closeCursor();
       } catch (PDOException $e) {

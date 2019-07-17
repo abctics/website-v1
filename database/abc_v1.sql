@@ -10,6 +10,7 @@ CREATE TABLE students (
     suspended tinyint(1) DEFAULT 0,
     PRIMARY KEY (studentID)
 );
+ALTER TABLE students ADD UNIQUE (email)
 CREATE TABLE teachers (
     teacherID int AUTO_INCREMENT,
     firstName varchar(50),

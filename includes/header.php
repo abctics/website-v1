@@ -39,11 +39,20 @@
           <a class="nav-link" href="/index#">Inicio <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/signup">Registrarse</a>
+          <a class="nav-link" href="/portafolio/cv.html" target="_blank">Portafolio</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/login">Iniciar sesión</a>
-        </li>
+        <?php if (!empty($_SESSION['studentLoggedIn']) && !empty($_SESSION['studentUsername']) && $_SESSION['studentLoggedIn'] == 1): ?>
+          <li class="nav-item">
+            <a class="nav-link" href="/logout">Cerrar sesión</a>
+          </li>
+        <?php else: ?>
+          <li class="nav-item">
+            <a class="nav-link" href="/signup">Registrarse</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/login">Iniciar sesión</a>
+          </li>
+        <?php endif; ?>
       </ul>
       <!--<form class="form-inline my-2 my-lg-0" action="<?php echo $_SERVER['REQUEST_URI'];?>">-->
         <div class="form-inline my-2 my-lg-0">

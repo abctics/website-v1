@@ -1,6 +1,6 @@
 <?php
 include_once $_SERVER["DOCUMENT_ROOT"] . "/managment/base.php";
-include_once "includes/header-login.php";
+include_once $_SERVER["DOCUMENT_ROOT"] . "/admin/includes/header-login.php";
 
 $pageTitle = 'Registro';
 
@@ -22,7 +22,7 @@ $pageTitle = 'Registro';
     }
     ?>
 
-    <form action="signup.php" method="post">
+    <form action="add-admin.php" method="post">
       <div class="form-group has-feedback">
         <input type="text" class="form-control" name="name" placeholder="Nombre" required value="<?php if(!empty($_POST['name'])) echo $_POST['name']; ?>">
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
@@ -66,6 +66,6 @@ $pageTitle = 'Registro';
 <!-- jQuery 3 -->
 <script src="/admin/js/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
-<script src="/admin/js/bootstrap.min.js"></script>
+<script src=  "/admin/js/bootstrap.min.js"></script>
 </body>
 </html>

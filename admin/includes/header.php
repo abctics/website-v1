@@ -267,6 +267,19 @@
             <li><a href="/admin/views/questions/list-questions.php"><i class="fa-dot-circle"></i> Listado de preguntas</a></li>
           </ul>
         </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-user"></i> <span>Usuarios</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="/admin/views/admins/add-admin.php"><i class="fa-dot-circle"></i> Agregar administrador</a></li>
+            <li><a href="/admin/views/admins/add-teacher.php"><i class="fa-dot-circle"></i> Agregar profesores</a></li>
+            <li><a href="/admin/views/admins/list-users.php"><i class="fa-dot-circle"></i> Listado de usuarios</a></li>
+          </ul>
+        </li>
       </ul>
     </section>
     <!-- /.sidebar -->
