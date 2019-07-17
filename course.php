@@ -1,4 +1,6 @@
-<?php include_once "managment/base.php";
+<?php
+include_once "managment/base.php";
+include_once $_SERVER["DOCUMENT_ROOT"] . "/managment/sessionmanager-main.php";
 $pageTitle = "Curso".' '.$_GET['id'].' '.'Módulo'.' '.$_GET['moduleid'].' '.'Tema'.' '.$_GET['topicid'];
 include_once "includes/header.php";
 include_once "classes/general.modules.php";

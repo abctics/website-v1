@@ -15,10 +15,17 @@ include_once "includes/header.php";
           <input type="text" id="lastName" class="form-control" name="lastName">
         </div>
         <div class="">
-          <label for="email">Email</label>
+          <label for="email">Correo electrónico</label>
           <input type="email" id="email" class="form-control" aria-describedby="emailHelpBlock" name="email" required>
           <small id="emailHelpBlock" class="form-text text-muted">
             Este email ya está en uso.
+          </small>
+        </div>
+        <div class="">
+          <label for="userName">Usuario</label>
+          <input type="text" id="userName" class="form-control" aria-describedby="userNameHelpBlock" name="userName" required>
+          <small id="userNameHelpBlock" class="form-text text-muted">
+            Este usuario ya está en uso.
           </small>
         </div>
         <div class="">

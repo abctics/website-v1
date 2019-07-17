@@ -110,7 +110,81 @@ class Admin
                 . " la informaci&oacute;n de usuario a la base de datos. </p>";
         }
     }
+    public function createAccountTeacher()
+    {
+        if (isset($_POST['password1']) && isset($_POST['password2']) && $_POST['password1'] != $_POST['password2']) {
+            return '<div class="callout callout-danger">
+                  <h4><i class="icon fa fa-ban"></i> Error</h4>
+                  Las contraseñas ingresadas no son iguales.
+                </div>';
+        } else if (strlen($_POST['password1']) < 7) {
+            return '<div class="callout callout-danger">
+                  <h4><i class="icon fa fa-ban"></i> Error</h4>
+                  La contraseña debe tener al menos 7 dígitos.
+                </div>';
+        } else if (!(preg_match('/[A-Za-z]/', $_POST['password1']) && preg_match('/[0-9]/', $_POST['password1']))) {
+            return '<div class="callout callout-danger">
+                  <h4><i class="icon fa fa-ban"></i> Error</h4>
+                  La contraseña debe tener al menos un número y una letra.
+                </div>';
+        }
 
+        $email = trim($_POST['email']);
+        $pwd = password_hash($_POST['password1'], PASSWORD_DEFAULT);
+        $name = $_POST['name'];
+        $v = sha1(time());
+
+        $sql = "SELECT COUNT(email) AS theCount
+                FROM teachers
+                WHERE email=:email";
+
+        if ($stmt = $this->_db->prepare($sql)) {
+            $stmt->bindParam(":email", $email, PDO::PARAM_STR);
+            $stmt->execute();
+            $row = $stmt->fetch();
+            if ($row['theCount'] != 0) {
+                return '<div class="callout callout-danger">
+                  <h4><i class="icon fa fa-ban"></i> Error</h4>
+                  Otro administrador est&aacute; registrado con este email.
+                </div>';
+            }
+            /*if (!$this->sendAdminVerificationEmail($email, $v, $_POST['password1'])) {
+                return '<div class="callout callout-danger">
+                  <h4><i class="icon fa fa-ban"></i> Error</h4>
+                  Hubo un error enviando el email de verificaci&oacute;n.
+                </div>';
+            }*/
+
+            $stmt->closeCursor();
+        }
+
+        $sql = "INSERT INTO teachers(
+                firstName,
+                lastName,
+                email,
+                password,
+                verCode)
+                VALUES(:firstName,:lastName, :email, :pass, :ver)";
+
+        if ($stmt = $this->_db->prepare($sql)) {
+          $stmt->bindParam(":firstName", $name, PDO::PARAM_STR);
+          $stmt->bindParam(":lastName", $_POST['last_name'], PDO::PARAM_STR);
+            $stmt->bindParam(":email", $email, PDO::PARAM_STR);
+            $stmt->bindParam(":pass", $pwd, PDO::PARAM_STR);
+            $stmt->bindParam(":ver", $v, PDO::PARAM_STR);
+            $stmt->execute();
+            $stmt->closeCursor();
+
+            return '<div class="callout callout-success">
+              <h4><i class="icon fa fa-check"></i> &iexcl;Éxito!</h4>
+              Le hemos enviado un email al usuario para que verifique su cuenta.
+            </div>';
+
+        } else {
+            return "<h2> Error </h2><p> No se pudo introducir "
+                . " la informaci&oacute;n de usuario a la base de datos. </p>";
+        }
+    }
     /**
      * Sends an email to a user with a link to verify their new account
      *
@@ -361,9 +435,6 @@ El equipo de ABC<br/><br/>';
                       No se pudo activar tu cuenta. Por favor contacta al webmaster.
                     </div>';
                 }
-                // Logs the user in if verification is successful
-                //$_SESSION['AdminUsername'] = $row['email'];
-                //$_SESSION['AdminLoggedIn'] = 1;
 
             } else {
                 return '
@@ -469,6 +540,46 @@ El equipo de ABC<br/><br/>';
                 {
                     $_SESSION['AdminUsername'] = htmlentities($_POST['username'], ENT_QUOTES);
                     $_SESSION['AdminLoggedIn'] = 1;
+                    return TRUE;
+                }
+                else
+                {
+                  return FALSE;
+                }
+            }
+            else
+            {
+                return FALSE;
+            }
+        }
+        catch (PDOException $e)
+        {
+            return FALSE;
+        }
+    }
+
+    /**
+     * Checks credentials and logs in the user
+     *
+     * @return boolean    TRUE on success and FALSE on failure
+     */
+    public function accountLoginStudent()
+    {
+        $sql = "SELECT email, password, verified
+                FROM students
+                WHERE email=:user";
+        try {
+            $stmt = $this->_db->prepare($sql);
+            $stmt->bindParam(':user', $_POST['username'], PDO::PARAM_STR);
+            $stmt->execute();
+            $row = $stmt->fetch();
+
+            if ($stmt->rowCount() == 1 && $row['verified'] == 1)
+            {
+                if (password_verify($_POST['password'], $row['password']))
+                {
+                    $_SESSION['studentUsername'] = htmlentities($_POST['username'], ENT_QUOTES);
+                    $_SESSION['studentLoggedIn'] = 1;
                     return TRUE;
                 }
                 else
